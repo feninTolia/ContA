@@ -1,0 +1,40 @@
+@import-normalize;
+
+body {
+  box-sizing: border-box;
+  background-color: #171717;
+  color: #e1e1e1;
+  margin: 15px;
+  font-family: monospace;
+  font-size: 28px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+.title {
+  color: red;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.loader {
+  display: inline-block;
+}
+
+.rotate {
+  animation: rotate 1s cubic-bezier(0, 0.28, 1, 0.73) infinite;
+}
+@keyframes rotate {
+  to {
+    transform: rotate(-360deg);
+  }
+}

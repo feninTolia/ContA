@@ -16,11 +16,11 @@ const ContactList = () => {
 
   return (
     <ul>
-      {(filter || contacts)?.map(({ id, name, phone }) => (
+      {(filter || contacts)?.map(({ id, name, number }) => (
         <ContactItem
           key={id}
           name={name}
-          number={phone}
+          number={number}
           onDeleteContact={handleDeleteContact}
           id={id}
         />

@@ -15,7 +15,7 @@ const DisplayingErrorMessagesSchema = Yup.object().shape({
     .max(50, 'Too Long!')
     .required('Please enter the required field')
     .matches(/^[aA-zZ\s]+$/, 'Only alphabets are allowed for this field '),
-  phone: Yup.string()
+  number: Yup.string()
     .matches(
       /^(?:\+38)?(0\d{9})$/,
       'Phone number is not valid. For example 0XXXXXXXXX'
@@ -28,7 +28,7 @@ const ContactForm = ({ onAddContact }) => {
 
   return (
     <Formik
-      initialValues={{ name: '', phone: '' }}
+      initialValues={{ name: '', number: '' }}
       validationSchema={DisplayingErrorMessagesSchema}
       onSubmit={(values, actions) => {
         actions.resetForm();
@@ -45,11 +45,11 @@ const ContactForm = ({ onAddContact }) => {
             )}
           </label>
 
-          <label htmlFor="phone">
+          <label htmlFor="number">
             Number
-            <Input type="tel" name="phone" id="phone" required />
-            {touched.phone && errors.phone && (
-              <ErrorMesage>{errors.phone}</ErrorMesage>
+            <Input type="tel" name="number" id="number" required />
+            {touched.number && errors.number && (
+              <ErrorMesage>{errors.number}</ErrorMesage>
             )}
           </label>
 

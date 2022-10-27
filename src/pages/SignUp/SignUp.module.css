@@ -1,5 +1,5 @@
 .wrapper {
-  /* padding-top: 200px; */
+  padding-top: 100px;
   text-align: center;
 }
 
@@ -31,11 +31,12 @@
 }
 
 .input {
+  font-size: 16px;
   color: #c9d1d9;
   width: 280px;
   border-radius: 10px;
   /* margin-bottom: 10px; */
-  padding: 10px 5px;
+  padding: 8px 10px;
   border: 1px solid #21262d;
   background-color: #0d1117;
 }
@@ -50,4 +51,10 @@
   padding: 10px 20px;
   border: 1px solid #21262d;
   background-color: #6a8623;
+  transition: 250ms;
+}
+
+.button:hover,
+.button:focus {
+  background-color: #566d1c;
 }

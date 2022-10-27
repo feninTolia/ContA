@@ -2,23 +2,27 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/authThunks';
 
-const LogInForm = () => {
-  const [logInData, setLogInData] = useState({
+//log in
+
+const SignIn = () => {
+  const [signInData, setSignInData] = useState({
     email: '',
     password: '',
   });
   const dispatch = useDispatch();
 
-  const handleLogInBtnClicK = e => {
+  const handleSignInSubmit = e => {
     e.preventDefault();
-    console.log(logInData);
-    dispatch(logIn(logInData));
+    console.log(signInData);
+    dispatch(logIn(signInData));
   };
 
   const handleInputsChange = e => {
-    setLogInData({ ...logInData, [e.target.name]: e.target.value });
+    //!set prev ????????????????????????????????
+    setSignInData({ ...signInData, [e.target.name]: e.target.value });
   };
 
+  //! onSubmit ?????????????????????????
   return (
     <>
       <h3>Log in</h3>
@@ -29,7 +33,7 @@ const LogInForm = () => {
             type="email"
             name="email"
             onChange={handleInputsChange}
-            value={logInData.email}
+            value={signInData.email}
           />
         </label>
         <br />
@@ -39,11 +43,11 @@ const LogInForm = () => {
             type="password"
             name="password"
             onChange={handleInputsChange}
-            value={logInData.password}
+            value={signInData.password}
           />
         </label>
         <br />
-        <button type="button" onClick={handleLogInBtnClicK}>
+        <button type="button" onClick={handleSignInSubmit}>
           Log in
         </button>
       </form>
@@ -51,4 +55,4 @@ const LogInForm = () => {
   );
 };
 
-export default LogInForm;
+export default SignIn;

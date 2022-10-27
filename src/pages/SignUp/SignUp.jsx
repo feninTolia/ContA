@@ -1,30 +1,35 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/authThunks';
-import css from 'components/SignInForm/SignInForm.module.css';
+import css from 'pages/SignUp/SignUp.module.css';
 
-const SignInForm = () => {
-  const [signInData, setSignInData] = useState({
+//register
+const SignUpPage = () => {
+  const initialState = {
     name: '',
     email: '',
     password: '',
-  });
+  };
+
+  const [signUpData, setSignUpData] = useState(initialState);
   const dispatch = useDispatch();
 
-  const handleRegisterBtnClicK = e => {
+  const handleSigUpSubmit = e => {
     e.preventDefault();
-    console.log(signInData);
-    dispatch(register(signInData));
+    console.log(signUpData);
+    dispatch(register(signUpData));
+    setSignUpData(initialState);
   };
 
   const handleInputsChange = e => {
-    setSignInData({ ...signInData, [e.target.name]: e.target.value });
+    //! set prev ??????????????????????????????????????????
+    setSignUpData({ ...signUpData, [e.target.name]: e.target.value });
   };
 
   return (
     <div className={css.wrapper}>
       <span className={css.logo}>🧚🏻‍♀️</span>
-      <h3 className={css.title}>Sign in to ContA</h3>
+      <h3 className={css.title}>Sign up to ContA</h3>
       <form className={css.form}>
         <label className={css.label}>
           Name
@@ -32,7 +37,7 @@ const SignInForm = () => {
             type="text"
             name="name"
             onChange={handleInputsChange}
-            value={signInData.name}
+            value={signUpData.name}
             className={css.input}
           />
         </label>
@@ -43,7 +48,7 @@ const SignInForm = () => {
             type="email"
             name="email"
             onChange={handleInputsChange}
-            value={signInData.email}
+            value={signUpData.email}
             className={css.input}
           />
         </label>
@@ -54,21 +59,22 @@ const SignInForm = () => {
             type="password"
             name="password"
             onChange={handleInputsChange}
-            value={signInData.password}
+            value={signUpData.password}
             className={css.input}
           />
         </label>
         <br />
         <button
           type="button"
-          onClick={handleRegisterBtnClicK}
+          //! change on onSubmit???????????????????????
+          onClick={handleSigUpSubmit}
           className={css.button}
         >
-          Sign in
+          Sign up
         </button>
       </form>
     </div>
   );
 };
 
-export default SignInForm;
+export default SignUpPage;

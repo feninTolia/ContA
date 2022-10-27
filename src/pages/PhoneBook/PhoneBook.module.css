@@ -1,0 +1,13 @@
+* {
+  font-family: sans-serif;
+}
+
+.wrapper {
+  padding-top: 60px;
+}
+
+.title {
+  color: #6a8623;
+  display: inline-block;
+  margin-right: 20px;
+}

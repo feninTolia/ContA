@@ -1,20 +1,26 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import { logIn } from 'redux/auth/authThunks';
+import css from 'pages/SignIn/SignIn.module.css';
 
 //log in
 
 const SignIn = () => {
-  const [signInData, setSignInData] = useState({
+  const initialState = {
     email: '',
     password: '',
-  });
+  };
+  const [signInData, setSignInData] = useState(initialState);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isRefreshing = useSelector(state => state.auth.isRefreshing);
 
   const handleSignInSubmit = e => {
     e.preventDefault();
-    console.log(signInData);
-    dispatch(logIn(signInData));
+    dispatch(logIn(signInData)).then(() => navigate('/PhoneBook'));
+
+    setSignInData(initialState);
   };
 
   const handleInputsChange = e => {
@@ -24,34 +30,44 @@ const SignIn = () => {
 
   //! onSubmit ?????????????????????????
   return (
-    <>
-      <h3>Log in</h3>
-      <form>
-        <label>
+    <div className={css.wrapper}>
+      <Link to={'/'} className={css.backLink}>
+        ⬅
+      </Link>
+      <span className={css.logo}>🧚🏻‍♀️</span>
+      <h1 className={css.title}>Sign in to ContA</h1>
+      <form className={css.form}>
+        <label className={css.label}>
           Email
           <input
             type="email"
             name="email"
             onChange={handleInputsChange}
             value={signInData.email}
+            className={css.input}
           />
         </label>
         <br />
-        <label>
+        <label className={css.label}>
           Password
           <input
             type="password"
             name="password"
             onChange={handleInputsChange}
             value={signInData.password}
+            className={css.input}
           />
         </label>
         <br />
-        <button type="button" onClick={handleSignInSubmit}>
-          Log in
+        <button
+          type="button"
+          onClick={handleSignInSubmit}
+          className={css.button}
+        >
+          Sign in
         </button>
       </form>
-    </>
+    </div>
   );
 };
 

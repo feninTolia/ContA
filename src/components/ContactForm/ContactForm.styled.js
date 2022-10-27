@@ -13,8 +13,6 @@ export const AddContactForm = styled(Form)`
 
   font-family: monospace;
   color: white;
-  /* font-size: 32px; */
-  background-color: #444;
   border-radius: 15px;
 `;
 

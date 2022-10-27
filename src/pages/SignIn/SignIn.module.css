@@ -14,8 +14,10 @@
 }
 
 .title {
+  font-size: 36px;
   font-weight: lighter;
 }
+
 .form {
   margin: 0 auto;
   width: 310px;

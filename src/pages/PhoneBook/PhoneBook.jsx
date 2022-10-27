@@ -1,15 +1,20 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { selectContacts, selectContactsItems } from 'redux/selectors';
 import { fetchContacts, addContact } from 'redux/contactsThunks';
 import ContactForm from 'components/ContactForm/ContactForm';
 import Filter from 'components/Filter/Filter';
 import ContactList from 'components/ContactList/ContactList';
+import css from 'pages/PhoneBook/PhoneBook.module.css';
 
 const PhoneBook = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContactsItems);
   const { isLoading, error } = useSelector(selectContacts);
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -29,9 +34,12 @@ const PhoneBook = () => {
     dispatch(addContact(newContact));
   };
 
+  if (!isLoggedIn) {
+    navigate('/SignIn', { replace: true });
+  }
   return (
-    <div>
-      <h1 className="title">Phonebook</h1>
+    <div className={css.wrapper}>
+      <h1 className={css.title}>Phonebook</h1>
       {isLoading && (
         <img
           src="https://img.icons8.com/color/48/000000/iphone-spinner--v1.png"

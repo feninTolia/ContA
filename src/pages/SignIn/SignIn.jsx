@@ -5,7 +5,6 @@ import { logIn } from 'redux/auth/authThunks';
 import css from 'pages/SignIn/SignIn.module.css';
 
 //log in
-
 const SignIn = () => {
   const initialState = {
     email: '',

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { register } from 'redux/auth/authThunks';
 import css from 'pages/SignUp/SignUp.module.css';
@@ -14,11 +14,10 @@ const SignUpPage = () => {
   const navigate = useNavigate();
   const [signUpData, setSignUpData] = useState(initialState);
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
   const handleSigUpSubmit = e => {
     e.preventDefault();
-    dispatch(register(signUpData)).then(() => isLoggedIn && navigate('/'));
+    dispatch(register(signUpData)).then(() => navigate('/'));
     setSignUpData(initialState);
   };
 

@@ -7,7 +7,9 @@ const ContactItem = ({ id, name, number, onDeleteContact }) => {
 
   return (
     <li className={css.contactItem}>
-      <span></span>
+      <a href={`tel:${number}`} className={css.phoneBtn}>
+        📞
+      </a>
       <span>{name} </span>
       <span>{number} </span>
       <button

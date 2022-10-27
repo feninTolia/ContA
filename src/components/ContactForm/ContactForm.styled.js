@@ -12,8 +12,8 @@ export const AddContactForm = styled(Form)`
   margin-bottom: 30px;
 
   font-family: monospace;
-  color: white;
-  border-radius: 15px;
+  color: #c9d1d9;
+  border-radius: 10px;
 `;
 
 export const Input = styled(Field)`
@@ -25,7 +25,7 @@ export const Input = styled(Field)`
   border: none;
   background-color: #999;
   padding: 5px 10px;
-  color: white;
+  color: #2c2c2c;
 `;
 
 export const AddContactBtn = styled.button`
@@ -38,11 +38,11 @@ export const AddContactBtn = styled.button`
   color: black;
   border-radius: 10px;
   border: none;
-  transition: 250ms linear;
+  transition: 150ms linear;
+  background-color: #6a8623;
 
   :hover {
-    box-shadow: 0 0 10px 2px white;
-    color: #555;
+    background-color: #566d1c;
   }
 `;
 
@@ -50,5 +50,5 @@ export const ErrorMesage = styled.div`
   margin-top: 10px;
   padding-left: 10px;
   font-size: 18px;
-  color: red;
+  color: #bb0f0f;
 `;

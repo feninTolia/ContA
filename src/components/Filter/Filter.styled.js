@@ -11,7 +11,7 @@ export const Input = styled(Field)`
   border: none;
   background-color: #999;
   padding: 5px 10px;
-  color: white;
+  color: #2c2c2c;
 `;
 
 export const FilterLabel = styled.label`

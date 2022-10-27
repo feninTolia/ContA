@@ -1,28 +1,7 @@
-.wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  align-items: center;
-
-  font-size: 16px;
-
-  padding: 16px 20px;
-  color: aliceblue;
-  background-color: #161b22;
-}
-
-.navItem {
+.user {
+  color: #9bacb9;
   margin-right: 20px;
-  transition: 200ms;
-}
-
-.navItem:hover {
-  color: #7d895d;
+  cursor: default;
 }
 
 .navItemMarked {

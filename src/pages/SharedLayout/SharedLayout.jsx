@@ -1,18 +1,11 @@
 import { Outlet, NavLink } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { logOut } from 'redux/auth/authThunks';
+import { useSelector } from 'react-redux';
+import UserMenu from 'components/UserMenu/UserMenu';
 import css from 'pages/SharedLayout/SharedLayout.module.css';
 
 const SharedLayout = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const userEmail = useSelector(state => state.auth.user.email);
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
-  const handleLogOut = () => {
-    dispatch(logOut()).then(() => navigate('/'));
-  };
   return (
     <>
       <div className={css.wrapper}>
@@ -27,12 +20,7 @@ const SharedLayout = () => {
 
         <div>
           {isLoggedIn ? (
-            <>
-              <span className={css.user}>🙋‍♀️ {userEmail} </span>
-              <button onClick={handleLogOut} className={css.navItemMarked}>
-                Log out
-              </button>
-            </>
+            <UserMenu />
           ) : (
             <>
               <NavLink to="/SignUp" className={css.navItem}>

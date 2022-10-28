@@ -46,7 +46,7 @@ const PhoneBook = () => {
       {contacts.length > 0 && <h2>Contacts</h2>}
       {contacts.length > 0 && <Filter />}
       <ContactList />
-      {error && <h2>Oooops, smth went wrong (×﹏×)</h2>}
+      {error && <h2>`Oooops, smth went wrong (×﹏×)`</h2>}
     </div>
   );
 };

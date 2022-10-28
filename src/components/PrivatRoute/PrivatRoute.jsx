@@ -5,7 +5,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 const PrivatRoute = () => {
   const token = useSelector(state => state.auth.token);
 
-  return <div>{!token ? <Navigate to={'/SignIn'} /> : <Outlet />}</div>;
+  return <div>{token ? <Outlet /> : <Navigate to={'/login'} />}</div>;
 };
 
 export default PrivatRoute;

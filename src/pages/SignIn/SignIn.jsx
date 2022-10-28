@@ -16,7 +16,7 @@ const SignIn = () => {
 
   const handleSignInSubmit = e => {
     e.preventDefault();
-    dispatch(logIn(signInData)).then(() => navigate('/PhoneBook'));
+    dispatch(logIn(signInData)).then(() => navigate('/contacts'));
 
     setSignInData(initialState);
   };

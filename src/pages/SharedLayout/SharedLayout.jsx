@@ -13,7 +13,7 @@ const SharedLayout = () => {
           <NavLink to="/" end className={css.navItem}>
             Home
           </NavLink>
-          <NavLink to="/PhoneBook" className={css.navItem}>
+          <NavLink to="/contacts" className={css.navItem}>
             PhoneBook
           </NavLink>
         </div>
@@ -23,10 +23,10 @@ const SharedLayout = () => {
             <UserMenu />
           ) : (
             <>
-              <NavLink to="/SignUp" className={css.navItem}>
+              <NavLink to="/register" className={css.navItem}>
                 Sign Up
               </NavLink>
-              <NavLink to="/SignIn" className={css.navItemMarked}>
+              <NavLink to="/login" className={css.navItemMarked}>
                 Sign In
               </NavLink>
             </>

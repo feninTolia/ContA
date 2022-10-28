@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/authThunks';
 import SharedLayout from 'pages/SharedLayout/SharedLayout';
 import PrivatRoute from 'components/PrivatRoute/PrivatRoute';
@@ -13,7 +13,6 @@ const PhoneBook = lazy(() => import('pages/PhoneBook/PhoneBook'));
 
 const App = () => {
   const dispatch = useDispatch();
-  const isRefreshing = useSelector(state => state.auth.isRefreshing);
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -23,33 +22,31 @@ const App = () => {
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          {!isRefreshing && (
-            <>
+          <>
+            <Route
+              index
+              element={
+                <Suspense fallback={<div>Loading...</div>}>
+                  <HomePage />
+                </Suspense>
+              }
+            />
+            <Route element={<PrivatRoute />}>
               <Route
-                index
+                path="/contacts"
                 element={
                   <Suspense fallback={<div>Loading...</div>}>
-                    <HomePage />
+                    <PhoneBook />
                   </Suspense>
                 }
               />
-              <Route element={<PrivatRoute />}>
-                <Route
-                  path="/PhoneBook"
-                  element={
-                    <Suspense fallback={<div>Loading...</div>}>
-                      <PhoneBook />
-                    </Suspense>
-                  }
-                />
-              </Route>
-            </>
-          )}
+            </Route>
+          </>
         </Route>
 
         <Route element={<PublicRoute />}>
           <Route
-            path="/SignUp"
+            path="/register"
             element={
               <Suspense fallback={<div>Loading...</div>}>
                 <SignUpPage />
@@ -57,7 +54,7 @@ const App = () => {
             }
           />
           <Route
-            path="/SignIn"
+            path="/login"
             element={
               <Suspense fallback={<div>Loading...</div>}>
                 <SignIn />

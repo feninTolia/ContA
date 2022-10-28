@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Field } from 'formik';
 
 export const Input = styled(Field)`
-  width: 30vw;
+  width: 500px;
 
   font-size: 28px;
   box-sizing: border-box;

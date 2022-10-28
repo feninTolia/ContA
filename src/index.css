@@ -2,6 +2,7 @@
 
 * {
   box-sizing: border-box;
+  cursor: default;
 }
 
 body {
@@ -34,6 +35,9 @@ button {
   cursor: pointer;
 }
 
+input {
+  cursor: text;
+}
 .active {
   color: #97bd38;
 }

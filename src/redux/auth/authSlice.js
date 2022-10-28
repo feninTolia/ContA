@@ -36,6 +36,7 @@ const authSlice = createSlice({
       state.isRefreshing = false;
     },
     [refreshUser.rejected](state) {
+      state.token = null;
       state.isRefreshing = false;
     },
   },

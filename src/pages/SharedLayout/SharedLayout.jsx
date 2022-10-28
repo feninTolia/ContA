@@ -4,7 +4,7 @@ import UserMenu from 'components/UserMenu/UserMenu';
 import css from 'pages/SharedLayout/SharedLayout.module.css';
 
 const SharedLayout = () => {
-  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const token = useSelector(state => state.auth.token);
 
   return (
     <>
@@ -19,7 +19,7 @@ const SharedLayout = () => {
         </div>
 
         <div>
-          {isLoggedIn ? (
+          {token ? (
             <UserMenu />
           ) : (
             <>

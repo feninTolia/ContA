@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { selectContacts, selectContactsItems } from 'redux/selectors';
@@ -13,8 +12,6 @@ const PhoneBook = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContactsItems);
   const { isLoading, error } = useSelector(selectContacts);
-  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -34,9 +31,6 @@ const PhoneBook = () => {
     dispatch(addContact(newContact));
   };
 
-  if (!isLoggedIn) {
-    navigate('/SignIn', { replace: true });
-  }
   return (
     <div className={css.wrapper}>
       <h1 className={css.title}>Phonebook</h1>

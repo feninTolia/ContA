@@ -7,13 +7,15 @@ const UserMenu = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userEmail = useSelector(state => state.auth.user.email);
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
   const handleLogOut = () => {
     dispatch(logOut()).then(() => navigate('/'));
   };
   return (
     <div>
-      <span className={css.user}>🙋‍♀️ {userEmail} </span>
+      <span className={css.user}>{userEmail && isLoggedIn && userEmail}</span>
+      <span className={css.userAvatar}>🙋‍♀️</span>
       <button onClick={handleLogOut} className={css.navItemMarked}>
         Log out
       </button>

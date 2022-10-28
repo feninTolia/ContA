@@ -4,6 +4,10 @@
   padding: 10px;
   background-color: rgb(151, 211, 53);
   border-radius: 50%;
+  transition: 250ms;
+}
+.phoneBtn:hover {
+  background-color: rgb(169, 237, 58);
 }
 
 .deleteBtn {

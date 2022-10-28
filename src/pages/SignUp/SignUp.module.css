@@ -9,6 +9,13 @@
   left: 30px;
 }
 
+.signInSpiner {
+  position: absolute;
+  top: 75px;
+  left: 50%;
+  transform: translateX(-60%);
+}
+
 .logo {
   font-size: 80px;
 }

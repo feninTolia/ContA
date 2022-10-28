@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { register } from 'redux/auth/authThunks';
 import css from 'pages/SignUp/SignUp.module.css';
@@ -14,10 +14,15 @@ const SignUpPage = () => {
   const navigate = useNavigate();
   const [signUpData, setSignUpData] = useState(initialState);
   const dispatch = useDispatch();
+  const isRefreshing = useSelector(state => state.auth.isRefreshing);
+  const token = useSelector(state => state.auth.token);
 
   const handleSigUpSubmit = e => {
     e.preventDefault();
-    dispatch(register(signUpData)).then(() => navigate('/'));
+    if ((signUpData.name && signUpData.email && signUpData.password) === '') {
+      return;
+    }
+    dispatch(register(signUpData)).then(() => token && navigate('/'));
     setSignUpData(initialState);
   };
 
@@ -30,6 +35,15 @@ const SignUpPage = () => {
       <Link to={'/'} className={css.backLink}>
         ⬅
       </Link>
+      <div className={css.signInSpiner}>
+        {isRefreshing && (
+          <img
+            src="https://img.icons8.com/color/48/000000/iphone-spinner--v1.png"
+            alt="🐡"
+            className="rotate"
+          />
+        )}
+      </div>
       <span className={css.logo}>🧚🏻‍♀️</span>
       <h3 className={css.title}>Sign up to ContA</h3>
       <form className={css.form}>

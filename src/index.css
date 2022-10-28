@@ -48,7 +48,7 @@ input {
 
 .rotate {
   width: 35px;
-  animation: rotate 1s cubic-bezier(0, 0.28, 1, 0.73) infinite;
+  animation: rotate 1s linear infinite;
 }
 @keyframes rotate {
   to {

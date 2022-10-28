@@ -66,3 +66,10 @@
 .button:focus {
   background-color: #566d1c;
 }
+
+.signInSpiner {
+  position: absolute;
+  top: 75px;
+  left: 50%;
+  transform: translateX(-60%);
+}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logIn } from 'redux/auth/authThunks';
 import css from 'pages/SignIn/SignIn.module.css';
@@ -13,11 +13,15 @@ const SignIn = () => {
   const [signInData, setSignInData] = useState(initialState);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isRefreshing = useSelector(state => state.auth.isRefreshing);
+  const token = useSelector(state => state.auth.token);
 
   const handleSignInSubmit = e => {
     e.preventDefault();
-    dispatch(logIn(signInData)).then(() => navigate('/contacts'));
-
+    if ((signInData.email && signInData.password) === '') {
+      return;
+    }
+    dispatch(logIn(signInData)).then(() => token && navigate('/contacts'));
     setSignInData(initialState);
   };
 
@@ -36,6 +40,7 @@ const SignIn = () => {
         <label className={css.label}>
           Email
           <input
+            minLength={4}
             type="email"
             name="email"
             onChange={handleInputsChange}
@@ -47,6 +52,7 @@ const SignIn = () => {
         <label className={css.label}>
           Password
           <input
+            required
             type="password"
             name="password"
             onChange={handleInputsChange}
@@ -56,13 +62,22 @@ const SignIn = () => {
         </label>
         <br />
         <button
-          type="button"
+          type="submit"
           onClick={handleSignInSubmit}
           className={css.button}
         >
           Sign in
         </button>
       </form>
+      <div className={css.signInSpiner}>
+        {isRefreshing && (
+          <img
+            src="https://img.icons8.com/color/48/000000/iphone-spinner--v1.png"
+            alt="🐡"
+            className="rotate"
+          />
+        )}
+      </div>
     </div>
   );
 };

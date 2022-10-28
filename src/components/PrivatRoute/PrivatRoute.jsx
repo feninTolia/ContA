@@ -1,11 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
+import { selectToken } from 'redux/auth/selectors.auth';
 
 const PrivatRoute = () => {
-  const token = useSelector(state => state.auth.token);
+  const isToken = useSelector(selectToken);
 
-  return <div>{token ? <Outlet /> : <Navigate to={'/login'} />}</div>;
+  return <div>{isToken ? <Outlet /> : <Navigate to={'/login'} />}</div>;
 };
 
 export default PrivatRoute;

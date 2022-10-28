@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { register } from 'redux/auth/authThunks';
 import css from 'pages/SignUp/SignUp.module.css';
+import { selectIsRefreshing } from 'redux/auth/selectors.auth';
 
-//register
 const SignUpPage = () => {
   const initialState = {
     name: '',
@@ -16,7 +16,7 @@ const SignUpPage = () => {
   const [error, setError] = useState({ error: null });
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const isRefreshing = useSelector(state => state.auth.isRefreshing);
+  const isRefreshing = useSelector(selectIsRefreshing);
 
   const handleSigUpSubmit = e => {
     e.preventDefault();

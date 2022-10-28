@@ -25,7 +25,6 @@ export const register = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      alert('such email already exist');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -44,7 +43,6 @@ export const logIn = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      alert('password or email are incorrect');
       return thunkAPI.rejectWithValue(error.message);
     }
   }

@@ -26,7 +26,7 @@ const App = () => {
             <Route
               index
               element={
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<div>...</div>}>
                   <HomePage />
                 </Suspense>
               }
@@ -35,7 +35,7 @@ const App = () => {
               <Route
                 path="/contacts"
                 element={
-                  <Suspense fallback={<div>Loading...</div>}>
+                  <Suspense fallback={<div>...</div>}>
                     <PhoneBook />
                   </Suspense>
                 }
@@ -48,7 +48,7 @@ const App = () => {
           <Route
             path="/register"
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<div>...</div>}>
                 <SignUpPage />
               </Suspense>
             }
@@ -56,7 +56,7 @@ const App = () => {
           <Route
             path="/login"
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<div>...</div>}>
                 <SignIn />
               </Suspense>
             }

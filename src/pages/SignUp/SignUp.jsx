@@ -11,18 +11,22 @@ const SignUpPage = () => {
     email: '',
     password: '',
   };
-  const navigate = useNavigate();
+
   const [signUpData, setSignUpData] = useState(initialState);
+  const [error, setError] = useState({ error: null });
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const isRefreshing = useSelector(state => state.auth.isRefreshing);
-  const token = useSelector(state => state.auth.token);
 
   const handleSigUpSubmit = e => {
     e.preventDefault();
     if ((signUpData.name && signUpData.email && signUpData.password) === '') {
       return;
     }
-    dispatch(register(signUpData)).then(() => token && navigate('/'));
+    dispatch(register(signUpData))
+      .unwrap()
+      .then(() => navigate('/'))
+      .catch(err => setError({ error: err }));
     setSignUpData(initialState);
   };
 
@@ -88,6 +92,19 @@ const SignUpPage = () => {
           Sign up
         </button>
       </form>
+      <div className={css.messageToast}>
+        Already have an account?{' '}
+        <Link to={'/login'} className={css.link}>
+          Sign in →
+        </Link>
+      </div>
+      <>
+        {error.error && (
+          <div className={css.erorToast}>
+            This email address is already in use.
+          </div>
+        )}
+      </>
     </div>
   );
 };

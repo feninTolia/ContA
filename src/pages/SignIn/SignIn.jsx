@@ -11,17 +11,20 @@ const SignIn = () => {
     password: '',
   };
   const [signInData, setSignInData] = useState(initialState);
+  const [error, setError] = useState({ error: null });
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isRefreshing = useSelector(state => state.auth.isRefreshing);
-  const token = useSelector(state => state.auth.token);
 
   const handleSignInSubmit = e => {
     e.preventDefault();
     if ((signInData.email && signInData.password) === '') {
       return;
     }
-    dispatch(logIn(signInData)).then(() => token && navigate('/contacts'));
+    dispatch(logIn(signInData))
+      .unwrap()
+      .then(() => navigate('/contacts'))
+      .catch(err => setError({ error: err }));
     setSignInData(initialState);
   };
 
@@ -34,6 +37,15 @@ const SignIn = () => {
       <Link to={'/'} className={css.backLink}>
         ⬅
       </Link>
+      <div className={css.signInSpiner}>
+        {isRefreshing && (
+          <img
+            src="https://img.icons8.com/color/48/000000/iphone-spinner--v1.png"
+            alt="🐡"
+            className="rotate"
+          />
+        )}
+      </div>
       <span className={css.logo}>🧚🏻‍♀️</span>
       <h1 className={css.title}>Sign in to ContA</h1>
       <form className={css.form}>
@@ -69,15 +81,17 @@ const SignIn = () => {
           Sign in
         </button>
       </form>
-      <div className={css.signInSpiner}>
-        {isRefreshing && (
-          <img
-            src="https://img.icons8.com/color/48/000000/iphone-spinner--v1.png"
-            alt="🐡"
-            className="rotate"
-          />
-        )}
+      <div className={css.messageToast}>
+        New to ContA?{' '}
+        <Link to={'/register'} className={css.link}>
+          Create an account.
+        </Link>
       </div>
+      <>
+        {error.error && (
+          <div className={css.erorToast}>Incorrect username or password. </div>
+        )}
+      </>
     </div>
   );
 };

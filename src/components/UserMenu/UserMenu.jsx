@@ -18,7 +18,7 @@ const UserMenu = () => {
       <span className={css.user}>{userEmail && isLoggedIn && userEmail}</span>
       <span className={css.userAvatar}>🙋‍♀️</span>
       <button onClick={handleLogOut} className={css.navItemMarked}>
-        Log out
+        Sign out
       </button>
     </div>
   );

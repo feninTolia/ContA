@@ -7,8 +7,10 @@ import ContactForm from 'components/ContactForm/ContactForm';
 import Filter from 'components/Filter/Filter';
 import ContactList from 'components/ContactList/ContactList';
 import css from 'pages/PhoneBook/PhoneBook.module.css';
+import { useState } from 'react';
 
 const PhoneBook = () => {
+  const [isSucceed, setIsSucceed] = useState(false);
   const dispatch = useDispatch();
   const contacts = useSelector(selectContactsItems);
   const { isLoading, error } = useSelector(selectContacts);
@@ -28,12 +30,26 @@ const PhoneBook = () => {
       return;
     }
 
-    dispatch(addContact(newContact));
+    setIsSucceed(false);
+
+    dispatch(addContact(newContact))
+      .unwrap()
+      .then(() => {
+        setIsSucceed(true);
+        setTimeout(() => setIsSucceed(false), 1900);
+      });
   };
 
   return (
     <div className={css.wrapper}>
       <h1 className={css.title}>Phonebook</h1>
+      {isSucceed && (
+        <img
+          src="https://img.icons8.com/color/48/000000/checkmark--v1.png"
+          alt="done"
+          className={css.done}
+        ></img>
+      )}
       {isLoading && (
         <img
           src="https://img.icons8.com/color/48/000000/iphone-spinner--v1.png"
@@ -43,8 +59,12 @@ const PhoneBook = () => {
       )}
       <br />
       <ContactForm onAddContact={handleAddContactForm} />
-      {contacts.length > 0 && <h2>Contacts</h2>}
-      {contacts.length > 0 && <Filter />}
+      {contacts.length > 0 && (
+        <>
+          <h2>Contacts</h2>
+          <Filter />
+        </>
+      )}
       <ContactList />
       {error && <h2>`Oooops, smth went wrong (×﹏×)`</h2>}
     </div>

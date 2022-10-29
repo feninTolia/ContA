@@ -12,3 +12,31 @@
   margin-right: 20px;
   font-weight: lighter;
 }
+
+.done {
+  width: 60px;
+  border: 2px solid #6a8623a0;
+  background-color: #252b1862;
+  border-radius: 5px;
+  padding: 8px;
+  vertical-align: sub;
+  animation: fadeIn 0.5s, fadeOut 0.5s 1.5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

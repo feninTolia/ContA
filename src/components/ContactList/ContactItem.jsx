@@ -18,7 +18,7 @@ const ContactItem = ({ id, name, number, onDeleteContact }) => {
       </a>
       <span>{name} </span>
       <span>{number} </span>
-      <UpdateContact id={id} />
+      <UpdateContact id={id} name={name} number={number} />
       <button
         type="button"
         onClick={() => onDeleteContact(id)}

@@ -4,12 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateContact } from 'redux/contactsThunks';
 import { selectIsLoading } from 'redux/selectors';
 
-const UpdateContact = ({ id }) => {
+const UpdateContact = ({ id, name, number }) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [formData, setFormData] = useState({ name: '', number: '' });
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
 
   const handleInfoBtnClick = () => {
+    setFormData({ name, number });
     setIsFormOpen(true);
   };
 
@@ -17,9 +19,22 @@ const UpdateContact = ({ id }) => {
     setIsFormOpen(false);
   };
 
-  const handleUpdateContact = userId => () => {
-    console.log(userId);
-    dispatch(updateContact({ userId, name: 'test2', number: '0100000101' }))
+  const handleInputsChange = e => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleUpdateContact = userId => e => {
+    if (
+      e.target.form[0].value.trim() === '' ||
+      e.target.form[1].value.trim() === ''
+    ) {
+      setIsFormOpen(false);
+      return;
+    }
+
+    dispatch(
+      updateContact({ userId, name: formData.name, number: formData.number })
+    )
       .unwrap()
       .then(() => setIsFormOpen(false));
   };
@@ -48,22 +63,22 @@ const UpdateContact = ({ id }) => {
           />
           <form className={css.updateForm}>
             <label className={css.label}>
-              Updated phone
+              Updated name
               <input
                 type="text"
-                name=""
-                // value={'1'}
-                // onChange={'1'}
+                name="name"
+                value={formData.name}
+                onChange={handleInputsChange}
                 className={css.input}
               />
             </label>
             <label className={css.label}>
               Updated number
               <input
-                type="text"
-                name=""
-                // value={'1'}
-                // onChange={'2'}
+                type="tel"
+                name="number"
+                value={formData.number}
+                onChange={handleInputsChange}
                 className={css.input}
               />
             </label>

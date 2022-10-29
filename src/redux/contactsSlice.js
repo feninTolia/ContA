@@ -65,7 +65,6 @@ export const contactsSlice = createSlice({
 
     [updateContact.pending]: handlePending,
     [updateContact.fulfilled](state, action) {
-      console.log(action.payload);
       state.isLoading = false;
       state.error = null;
       const index = state.contacts.items.findIndex(

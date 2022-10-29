@@ -1,19 +1,29 @@
 .phoneBtn {
-  display: inline-block;
-
-  padding: 10px;
-  background-color: rgb(151, 211, 53);
-  border-radius: 50%;
+  width: 50px;
+  background-color: transparent;
   transition: 250ms;
+  cursor: pointer;
 }
 .phoneBtn:hover {
-  background-color: rgb(169, 237, 58);
+  scale: 1.15;
+  rotate: 5deg;
+}
+
+.deleteIcon {
+  width: 25px;
+  cursor: pointer;
 }
 
 .deleteBtn {
-  display: inline-block;
+  padding: 4px 0 0;
   background-color: transparent;
   border: none;
+
+  transition: 250ms;
+}
+
+.deleteBtn:hover {
+  scale: 1.2;
 }
 
 .contactItem {

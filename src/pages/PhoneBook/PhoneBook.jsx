@@ -1,13 +1,14 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { selectContacts, selectContactsItems } from 'redux/selectors';
 import { fetchContacts, addContact } from 'redux/contactsThunks';
+
 import ContactForm from 'components/ContactForm/ContactForm';
 import Filter from 'components/Filter/Filter';
 import ContactList from 'components/ContactList/ContactList';
+
 import css from 'pages/PhoneBook/PhoneBook.module.css';
-import { useState } from 'react';
 
 const PhoneBook = () => {
   const [isSucceed, setIsSucceed] = useState(false);

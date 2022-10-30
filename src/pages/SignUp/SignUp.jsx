@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+
 import { Link, useNavigate } from 'react-router-dom';
+
+import { useDispatch, useSelector } from 'react-redux';
 import { register } from 'redux/auth/authThunks';
-import css from 'pages/SignUp/SignUp.module.css';
 import { selectIsRefreshing } from 'redux/auth/selectors.auth';
+
+import css from 'pages/SignUp/SignUp.module.css';
 
 const SignUpPage = () => {
   const initialState = {

@@ -1,8 +1,11 @@
 import { Outlet, NavLink } from 'react-router-dom';
+
 import { useSelector } from 'react-redux';
-import UserMenu from 'components/UserMenu/UserMenu';
-import css from 'pages/SharedLayout/SharedLayout.module.css';
 import { selectToken } from 'redux/auth/selectors.auth';
+
+import UserMenu from 'components/UserMenu/UserMenu';
+
+import css from 'pages/SharedLayout/SharedLayout.module.css';
 
 const SharedLayout = () => {
   const isToken = useSelector(selectToken);

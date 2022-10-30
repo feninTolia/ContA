@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { axiosInst } from 'redux/service/axiosBase';
 
 export const fetchContacts = createAsyncThunk(

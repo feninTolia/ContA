@@ -1,27 +1,17 @@
-import { Formik } from 'formik';
 import { useSelector } from 'react-redux';
-import * as Yup from 'yup';
+import { selectContacts } from 'redux/selectors';
+
+import { Formik } from 'formik';
+import { DisplayingErrorMessagesSchema } from './yupValidation';
+
+import PropTypes from 'prop-types';
+
 import {
   AddContactForm,
   Input,
   AddContactBtn,
   ErrorMesage,
 } from './ContactForm.styled';
-import { selectContacts } from 'redux/selectors';
-
-const DisplayingErrorMessagesSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Please enter the required field')
-    .matches(/^[aA-zZ\s]+$/, 'Only alphabets are allowed for this field '),
-  number: Yup.string()
-    .matches(
-      /^(?:\+38)?(0\d{9})$/,
-      'Phone number is not valid. For example 0XXXXXXXXX'
-    )
-    .required('Please enter the required field'),
-});
 
 const ContactForm = ({ onAddContact }) => {
   const { isLoading } = useSelector(selectContacts);
@@ -60,6 +50,10 @@ const ContactForm = ({ onAddContact }) => {
       )}
     </Formik>
   );
+};
+
+ContactForm.propTypes = {
+  onAddContact: PropTypes.func.isRequired,
 };
 
 export default ContactForm;

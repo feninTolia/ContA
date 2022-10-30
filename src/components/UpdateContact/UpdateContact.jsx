@@ -1,8 +1,12 @@
 import { useState } from 'react';
-import css from 'components/UpdateContact/UpdateContact.module.css';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { updateContact } from 'redux/contactsThunks';
 import { selectIsLoading } from 'redux/selectors';
+
+import PropTypes from 'prop-types';
+
+import css from 'components/UpdateContact/UpdateContact.module.css';
 
 const UpdateContact = ({ id, name, number }) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -94,6 +98,12 @@ const UpdateContact = ({ id, name, number }) => {
       )}
     </div>
   );
+};
+
+UpdateContact.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  number: PropTypes.string,
 };
 
 export default UpdateContact;

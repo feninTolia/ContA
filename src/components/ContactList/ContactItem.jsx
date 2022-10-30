@@ -1,7 +1,11 @@
 import { useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
-import css from 'components/ContactList/ContactItem.module.css';
+
 import UpdateContact from 'components/UpdateContact/UpdateContact';
+
+import PropTypes from 'prop-types';
+
+import css from 'components/ContactList/ContactItem.module.css';
 
 const ContactItem = ({ id, name, number, onDeleteContact }) => {
   const { isLoading } = useSelector(selectContacts);
@@ -33,6 +37,13 @@ const ContactItem = ({ id, name, number, onDeleteContact }) => {
       </button>
     </li>
   );
+};
+
+ContactItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
 };
 
 export default ContactItem;

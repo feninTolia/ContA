@@ -1,10 +1,13 @@
 import { lazy, Suspense, useEffect } from 'react';
+
 import { Routes, Route, Navigate } from 'react-router-dom';
+
 import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/authThunks';
+
 import SharedLayout from 'pages/SharedLayout/SharedLayout';
-import PrivatRoute from 'components/PrivatRoute/PrivatRoute';
-import PublicRoute from 'components/PublicRoute/PublicRoute';
+import PrivatRoute from 'routes/PrivatRoute/PrivatRoute';
+import PublicRoute from 'routes/PublicRoute/PublicRoute';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const SignUpPage = lazy(() => import('pages/SignUp/SignUp'));

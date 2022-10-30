@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router-dom';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from 'redux/auth/authThunks';
-import { useNavigate } from 'react-router-dom';
-import css from 'components/UserMenu/UserMenu.module.css';
 import { selectIsLoggedIn, selectUserEmail } from 'redux/auth/selectors.auth';
+
+import css from 'components/UserMenu/UserMenu.module.css';
 
 const UserMenu = () => {
   const dispatch = useDispatch();

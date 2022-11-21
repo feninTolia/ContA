@@ -32,5 +32,14 @@
 
   padding: 10px 0;
   align-items: center;
-  border-bottom: 1px solid rgb(31, 33, 47);
+}
+
+.contactItem:not(:last-child) {
+  border-bottom: 1px solid rgb(67, 69, 85);
+}
+
+.contactItem .name {
+  width: 230px;
+  margin-right: 15px;
+  overflow-x: scroll;
 }

@@ -6,6 +6,14 @@
   padding-top: 60px;
 }
 
+.contentWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
 .title {
   color: #6a8623;
   display: inline-block;
@@ -39,4 +47,34 @@
   100% {
     opacity: 0;
   }
+}
+
+.contactsListWrapper {
+  min-height: 370px;
+  padding: 15px;
+
+  background-color: hsla(0, 0%, 100%, 0.3);
+  backdrop-filter: blur(15px) saturate(86%);
+
+  backdrop-filter: blur(14px);
+  width: 600px;
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  box-shadow: rgba(173, 173, 208, 0.2) 0px 7px 29px 0px;
+  transition: 250ms;
+}
+
+.contactsListWrapper h2 {
+  margin: 0 0 20px;
+}
+
+.contactsListWrapper ul {
+  margin-bottom: 0;
+}
+
+.contactsListWrapper:hover {
+  scale: 1.02;
+  box-shadow: rgba(92, 92, 211, 0.2) 0px 7px 29px 0px;
 }

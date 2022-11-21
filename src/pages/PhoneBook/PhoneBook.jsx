@@ -58,16 +58,21 @@ const PhoneBook = () => {
           className="rotate"
         />
       )}
-      <br />
-      <ContactForm onAddContact={handleAddContactForm} />
-      {contacts.length > 0 && (
-        <>
-          <h2>Contacts</h2>
-          <Filter />
-        </>
-      )}
-      <ContactList />
-      {error && <h2>`Oooops, smth went wrong (×﹏×)`</h2>}
+
+      <div className={css.contentWrapper}>
+        <ContactForm onAddContact={handleAddContactForm} />
+
+        <div className={css.contactsListWrapper}>
+          {contacts.length > 0 && (
+            <>
+              <h2>Contacts</h2>
+              <Filter />
+            </>
+          )}
+          <ContactList />
+          {error && <h2>`Oooops, smth went wrong (×﹏×)`</h2>}
+        </div>
+      </div>
     </div>
   );
 };

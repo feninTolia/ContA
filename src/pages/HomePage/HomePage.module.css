@@ -1,3 +1,84 @@
 .wrapper {
   padding-top: 30px;
 }
+
+.hero_img {
+  position: absolute;
+  offset: 0;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.hero {
+  --gradient-dir: to top;
+  position: relative;
+
+  min-height: calc(300px + 15vw);
+  display: grid;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.9;
+  background: linear-gradient(
+      var(--gradient-dir),
+      hsl(0, 0%, 0%) 0%,
+      hsla(0, 0%, 0%, 0.995) 8.2%,
+      hsla(0, 0%, 0%, 0.981) 16%,
+      hsla(0, 0%, 0%, 0.958) 23.4%,
+      hsla(0, 0%, 0%, 0.926) 30.4%,
+      hsla(0, 0%, 0%, 0.885) 37.3%,
+      hsla(0, 0%, 0%, 0.835) 43.8%,
+      hsla(0, 0%, 0%, 0.776) 50.2%,
+      hsla(0, 0%, 0%, 0.709) 56.5%,
+      hsla(0, 0%, 0%, 0.633) 62.6%,
+      hsla(0, 0%, 0%, 0.548) 68.7%,
+      hsla(0, 0%, 0%, 0.455) 74.8%,
+      hsla(0, 0%, 0%, 0.354) 81%,
+      hsla(0, 0%, 0%, 0.244) 87.2%,
+      hsla(0, 0%, 0%, 0.126) 93.5%,
+      hsla(0, 0%, 0%, 0) 100%
+    )
+    left center/100% no-repeat;
+}
+
+.hero__wrapper {
+  flex: 1;
+  display: grid;
+  place-content: end start;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (min-width: 800px) {
+  .hero__wrapper {
+    place-content: center start;
+  }
+
+  .hero {
+    --gradient-dir: to right;
+  }
+}
+
+.hero__content {
+  z-index: 2;
+  padding: 1rem 0 1rem 1rem;
+  max-width: 65ch;
+}
+
+.hero__content p {
+  color: #fff;
+  font-size: clamp(1rem, 5vw, 1.25rem);
+}
+
+.hero__headline {
+  color: #fff;
+  font-size: clamp(1.35rem, 6vw, 2.15rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}

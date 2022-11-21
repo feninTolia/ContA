@@ -20,7 +20,7 @@ const ContactItem = ({ id, name, number, onDeleteContact }) => {
           className={css.phoneBtn}
         />
       </a>
-      <span>{name} </span>
+      <span className={css.name}>{name} </span>
       <span>{number} </span>
       <UpdateContact id={id} name={name} number={number} />
       <button
